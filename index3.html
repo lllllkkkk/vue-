@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>computer</title>
+</head>
+<body>
+  <div id="app">
+    <div>{{msg}}</div>
+    <div>{{oData}}</div>
+    <div>{{name}}</div>
+  </div>
+</body>
+</html>
+
+<script src="./vue.js"></script>
+<script>
+
+  var app = new Vue({
+    el:'#app',
+    data:{
+      msg:'hello',
+      first:'Liang',
+      last:'tong',
+      name:'123'
+    },
+    computed:{
+      oData(){
+        return this.msg.split('').reverse().join('')
+      }
+    },
+    watch:{
+      first(val){
+        console.log(val)
+        this.name = val + ' ' + this.last
+      },
+      last(val){
+        console.log(val,'3')
+        this.name = this.first + ' ' + val
+      }
+    }
+  })
+</script>

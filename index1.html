@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>v-model , v-for , v-on </title>
+</head>
+<body>
+  <div id="app">
+    <input v-model="message" type="text" /> <button @click="onSubmit">提交</button>
+    <ul>
+      <!-- <li v-for="(item,index) in msgList" :key="index">{{item}}</li> -->
+      <todo-li @child-delete="onDel" v-for="(item,index) in msgList" :key="index" :list="item" :index="index"></todo-li>
+    </ul>
+  </div>
+</body>
+</html>
+<script src="./vue.js"></script>
+<script>
+  // Vue.component('todo-li',{
+  //   props:['list'],
+  //   template:'<li>{{list}}</li>'
+  // })
+  var TodoLi = {
+    props:['list','index'],
+    template:'<li @click="onDelete">{{list}}</li>',
+    methods:{
+      onDelete(){
+        this.$emit('child-delete',this.index) // $emit('名称',需要传递的值)
+      }
+    }
+  }
+  var app = new Vue({
+    el:'#app',
+    components:{TodoLi},
+    data:{
+      message:'',
+      msgList:[]
+    },
+    methods:{
+      onSubmit(){
+        console.log(this.message,'message')
+        if(this.message){
+          this.msgList.push(this.message)
+        }else{
+          alert('请输入有效信息')
+        }
+        this.message = ''
+      },
+      onDel(val){
+        this.msgList.splice(val,1)
+      }
+    }
+  })
+
+</script>

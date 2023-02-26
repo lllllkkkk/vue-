@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+</html>
+
+<script>
+
+  //父子组件传值：父组件v-bind绑定属性，子组件props接收，子组件通过$emit向父组件传递数据;
+  // 非父子组件传值：vuex
+    // eventBus：定义一个js文件，内容为 import Vue from 'vue' ; export default new Vue();在需要传值的兄弟组件引入该文件
+    // import Bus from '../bus.js'; 传递方组件通过Bus.$emit('名称',传递的参数) 接受方组件通过Bus.$on('名称'，接收的参数 => {在这里就可以打印了})
+</script>

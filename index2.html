@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>vue实例</title>
+</head>
+<body>
+  <div id="app">123</div>
+</body>
+</html>
+<script src="./vue.js"></script>
+<script>
+  var app = new Vue({
+    el:'#app',
+    data:{
+      a:1
+    },
+    beforeCreate(){
+      console.log(123,this.a)
+    },
+    created(){
+      console.log(456,this.a)
+    }
+  })
+</script>
